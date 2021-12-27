@@ -3,7 +3,7 @@
         <div class="bg-gray-700 rounded-md shadow-md text-white w-1/3 mx-auto p-3 mt-10">
             <h3 class="text-center text-2xl">TodoList</h3>
             <AddSection :AddTodo="AddTodo"/>
-            <TodoList :todoList="todoList" utku="zeynep"/>
+            <TodoList @delete-event="deleteItem" :todoList="todoList" utku="zeynep"/>
         </div>
     </div>
 </template>
@@ -25,7 +25,11 @@ export default {
                 title: todoText,
             })
         }
-        return {todoList, AddTodo};
+        const deleteItem = (todo) => {
+            console.log("Todo", todo)
+            todoList.value = todoList.value.filter(t => t.id !== todo.id);
+        }
+        return {todoList, AddTodo, deleteItem};
     }
 };
 </script>

@@ -1,9 +1,9 @@
 <template>
     <section class="mt-4">
-        <TodoListItem v-for="todoItem in todoList" :key="todoItem.id" :todo="todoItem"/>
-        <small>{{ todoLength }} item vardır.</small>
-        <div class="text-green-400">Tamamlananlar</div>
-        <div class="text-red-400">Tamamlanmayanlar</div>
+        <TodoListItem @delete-event="$emit('delete-event', $event)" v-for="todoItem in todoList" :key="todoItem.id" :todo="todoItem"/>
+        <small>{{ todoLength }} {{ utku }} vardır.</small>
+<!--        <div class="text-green-400">Tamamlananlar</div>-->
+<!--        <div class="text-red-400">Tamamlanmayanlar</div>-->
     </section>
 </template>
 <script>
